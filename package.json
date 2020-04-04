@@ -1,0 +1,35 @@
+{
+  "name": "touchable",
+  "version": "1.0.0-alpha.1",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
+  "scripts": {
+    "dev": "dumi dev",
+    "build:docs": "dumi build",
+    "compile": "father-build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doxiaodong/Touchable.git"
+  },
+  "author": "doxiaodong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/doxiaodong/Touchable/issues"
+  },
+  "homepage": "https://github.com/doxiaodong/Touchable#readme",
+  "devDependencies": {
+    "dumi": "^1.0.13",
+    "father-build": "^1.17.2",
+    "typescript": "^3.8.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0"
+  }
+}
