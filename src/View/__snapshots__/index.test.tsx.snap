@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`View snapshot 1`] = `
+<View
+  data-a="aaa"
+>
+  <div
+    className="222"
+    data-a="aaa"
+  />
+</View>
+`;

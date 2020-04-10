@@ -21,12 +21,6 @@ function detectIsTouchable(props: TouchableProps) {
 const Touchable: React.FC<TouchableProps> = (props) => {
   const child = React.Children.only(props.children)
 
-  // 判断是否真的需要 touchable, 以便让嵌套的 Touchable 能正常冒泡
-  // 比如 Button 带 Icon 的场景
-  if (!detectIsTouchable(props)) {
-    return child as any
-  }
-
   const {
     onPress,
     onLongPress,
@@ -35,7 +29,8 @@ const Touchable: React.FC<TouchableProps> = (props) => {
     delayPressIn,
     delayPressOut,
     delayLongPress,
-    ...rest
+
+    children,
   } = props
 
   const { touch } = useTouchable(props, {
@@ -66,6 +61,12 @@ const Touchable: React.FC<TouchableProps> = (props) => {
     },
   })
 
+  // 判断是否真的需要 touchable, 以便让嵌套的 Touchable 能正常冒泡
+  // 比如 Button 带 Icon 的场景
+  if (!detectIsTouchable(props)) {
+    return child as any
+  }
+
   const addProps = {
     onKeyDown: touch.touchableHandleKeyEvent,
     onKeyUp: touch.touchableHandleKeyEvent,
@@ -78,7 +79,7 @@ const Touchable: React.FC<TouchableProps> = (props) => {
     onStartShouldSetResponder: touch.touchableHandleStartShouldSetResponder,
   }
 
-  return <View {...rest} {...addProps} />
+  return <View {...addProps}>{children}</View>
 }
 
 // Why need TouchableExport ?

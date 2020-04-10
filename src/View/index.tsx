@@ -1,15 +1,9 @@
 import * as React from 'react'
-import setAndForwardRef from '../setAndForwardRef'
+import convertRef from '../convertRef'
 import useResponderEvents from '../useResponderEvents'
 
-const View = React.forwardRef<any, any>((props, ref) => {
+const View: React.FC<any> = (props) => {
   const {
-    // for useElementLayout
-    onLayout,
-
-    // for setAndForwardRef
-    forwardedRef,
-
     // for useResponderEvent
     onMoveShouldSetResponder,
     onMoveShouldSetResponderCapture,
@@ -37,13 +31,7 @@ const View = React.forwardRef<any, any>((props, ref) => {
 
   const child = React.Children.only(props.children)
 
-  const hostRef = React.useRef(null)
-  const setRef = setAndForwardRef({
-    getForwardedRef: () => forwardedRef,
-    setLocalRef: (c) => {
-      hostRef.current = c
-    },
-  })
+  const { hostRef, ref } = convertRef(child.ref)
 
   useResponderEvents(hostRef, {
     onMoveShouldSetResponder,
@@ -66,8 +54,8 @@ const View = React.forwardRef<any, any>((props, ref) => {
 
   return React.cloneElement(child, {
     ...rest,
-    ref: setRef,
+    ref,
   })
-})
+}
 
 export default View

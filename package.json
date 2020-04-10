@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/doxiaodong/Touchable#readme",
   "devDependencies": {
+    "@types/enzyme": "^3.10.5",
     "@types/jest": "^25.2.1",
     "dumi": "^1.0.13",
     "enzyme": "^3.11.0",
