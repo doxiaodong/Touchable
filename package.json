@@ -28,7 +28,7 @@
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.4.4",
     "father-build": "^1.17.2",
-    "typescript": "^3.8.3",
+    "typescript": "^3.9.5",
     "umi-test": "^1.9.6"
   },
   "peerDependencies": {
